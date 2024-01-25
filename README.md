@@ -9,11 +9,11 @@ the age of child
 time needed to be watched
 ```
 def __init__(self, location, age, time, name):
-		geolocator = Nominatim(user_agent='distance_calculator')
-		self.location = geolocator.geocode(location, timeout = None)
-		self.age = age
-		self.time = time
-		self.name = name
+    geolocator = Nominatim(user_agent='distance_calculator')
+    self.location = geolocator.geocode(location, timeout = None)
+    self.age = age
+    self.time = time
+    self.name = name
 ```
 
 The name variable is currently utilized for bug testing and sanity checking.
@@ -26,12 +26,12 @@ the preferred age range they will baby sit
 the preferred times they will baby sit
 ```
 def __init__(self, location, pDistance, pAge, pTime, name):
-		geolocator = Nominatim(user_agent='distance_calculator')
-		self.location = geolocator.geocode(location, timeout = None)
-		self.pDistance = pDistance
-		self.pAge = pAge
-		self.pTime = pTime
-		self.name = name
+    geolocator = Nominatim(user_agent='distance_calculator')
+    self.location = geolocator.geocode(location, timeout = None)
+    self.pDistance = pDistance
+    self.pAge = pAge
+    self.pTime = pTime
+    self.name = name
 ```
 
 The name variable is currently utilized for bug testing and sanity checking.
