@@ -1,7 +1,7 @@
 from geopy.geocoders import Nominatim
 from geopy.distance import distance
 
-class rUser:
+class userClass:
 	def __init__(self, location, age, time, name):
                 geolocator = Nominatim(user_agent='distance_calculator')
                 self.location = geolocator.geocode(location, timeout = None)
