@@ -3,12 +3,12 @@ from geopy.distance import distance
 
 class sitterClass:
 	def __init__(self, location, preferredDistance, preferredAge, preferredTime, name):
-                geolocator = Nominatim(user_agent='distance_calculator')
-                self.location = geolocator.geocode(location, timeout = None)
-                self.preferredDistance = preferredDistance
-                self.preferredAge = preferredAge
-                self.preferredTime = preferredTime
-                self.name = name
+        geolocator = Nominatim(user_agent='distance_calculator')
+        self.location = geolocator.geocode(location, timeout = None)
+        self.preferredDistance = preferredDistance
+        self.preferredAge = preferredAge
+        self.preferredTime = preferredTime
+        self.name = name
 
 """
 location format 'street address, city, state zip, country'
