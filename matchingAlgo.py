@@ -1,8 +1,8 @@
 from geopy.geocoders import Nominatim
 from geopy.distance import distance
 from geopy.exc import GeocoderTimedOut
-from tempUserClass import rUser
-from tempSitterClass import rSitter
+from tempUserClass import userClass
+from tempSitterClass import sitterClass
 
 def calculateDistance(location1, location2):
     if location1 and location2:
@@ -12,42 +12,42 @@ def calculateDistance(location1, location2):
     else:
         return None
 
-def timeCheck(tUser, tSitter):
-    return ((tUser.time[0] >= tSitter.pTime[0]) and (tUser.time[1] <= tSitter.pTime[1]))
+def timeCheck(tempUser, tempSitter):
+    return ((tempUser.time[0] >= tempSitter.pTime[0]) and (tempUser.time[1] <= tempSitter.pTime[1]))
 
-def matchCheck(tUser, tSitter):
-    location1 = tUser.location
-    location2 = tSitter.location
+def matchCheck(tempUser, tempSitter):
+    location1 = tempUser.location
+    location2 = tempSitter.location
     distanceInMiles = calculateDistance(location1, location2)
-    if ((distanceInMiles <= tSitter.pDistance) and (tUser.age in tSitter.pAge)) and timeCheck(tUser, tSitter):
-        #print(tSitter.name)
-        return (tSitter, distanceInMiles)
+    if ((distanceInMiles <= tempSitter.pDistance) and (tempUser.age in tempSitter.pAge)) and timeCheck(tempUser, tempSitter):
+        #print(tempSitter.name)
+        return (tempSitter, distanceInMiles)
     else:
         pass
 
-def matchList(tUser, lSitter):
-    mSitter = []
-    for tSitter in lSitter:
-        mSitter.append(matchCheck(tUser, tSitter))
-    mSitter = [i for i in mSitter if i is not None]
-    return mSitter
+def matchList(tempUser, lSitter):
+    matchedSitterList = []
+    for tempSitter in lSitter:
+        matchedSitterList.append(matchCheck(tempUser, tempSitter))
+    matchedSitterList = [i for i in matchedSitterList if i is not None]
+    return matchedSitterList
 
 
 if __name__ == "__main__":
-    tUser = rUser("23412 Amberwick Pl, Diamond Bar, CA 91765, USA", 7, (1145,2345), "Billy")
-    tSitter = rSitter("1472 Spruce Tree Dr, Diamond Bar, CA 91765, USA", 20, list(range(6,12)), (0000,2359), "Mandy")
+    tempUser = userClass("23412 Amberwick Pl, Diamond Bar, CA 91765, USA", 7, (1145,2345), "Billy")
+    tempSitter = sitterClass("1472 Spruce Tree Dr, Diamond Bar, CA 91765, USA", 20, list(range(6,12)), (0000,2359), "Mandy")
 
-    #print(matchCheck(tUser, tSitter))
+    #print(matchCheck(tempUser, tempSitter))
 
-    lSitter = [
-        tSitter,
-        rSitter("1600 Grand Ave, Diamond Bar, CA 91765, USA", 200, [0], (0000,2359), "Grim"),
-        rSitter("1422 Summitridge Dr, Diamond Bar, CA 91765, USA", 0, [0], (0000,2359), "Erwin"),
-        rSitter("23506 Twin Spring Ln, Diamond Bar, CA 91765, USA", 200, list(range(0,17)), (0000,2359), "Sally"),
-        rSitter("1016 Park Spring Ln, Diamond Bar, CA 91765, USA", 200, list(range(0,17)), (0000,2359), "Gary")
+    listSitter = [
+        tempSitter,
+        sitterClass("1600 Grand Ave, Diamond Bar, CA 91765, USA", 200, [0], (0000,2359), "Grim"),
+        sitterClass("1422 Summitridge Dr, Diamond Bar, CA 91765, USA", 0, [0], (0000,2359), "Erwin"),
+        sitterClass("23506 Twin Spring Ln, Diamond Bar, CA 91765, USA", 200, list(range(0,17)), (0000,2359), "Sally"),
+        sitterClass("1016 Park Spring Ln, Diamond Bar, CA 91765, USA", 200, list(range(0,17)), (0000,2359), "Gary")
         ]
 
-    #print(lSitter)
+    #print(listSitter)
 
-    mList = matchList(tUser, lSitter)
-    print(mList)
+    matchListList = matchList(tempUser, lSitter)
+    print(matchListList)
