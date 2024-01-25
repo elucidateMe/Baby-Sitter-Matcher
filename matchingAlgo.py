@@ -15,15 +15,11 @@ def calculateDistance(location1, location2):
 def timeCheck(tempUser, tempSitter):
     return ((tempUser.time[0] >= tempSitter.pTime[0]) and (tempUser.time[1] <= tempSitter.pTime[1]))
 
-def matchCheck(tempUser, tempSitter):
-    location1 = tempUser.location
-    location2 = tempSitter.location
+def matchCheck(tUser, tSitter):
+    location1 = tUser.location
+    location2 = tSitter.location
     distanceInMiles = calculateDistance(location1, location2)
-    if ((distanceInMiles <= tempSitter.pDistance) and (tempUser.age in tempSitter.pAge)) and timeCheck(tempUser, tempSitter):
-        #print(tempSitter.name)
-        return (tempSitter, distanceInMiles)
-    else:
-        pass
+    return ((distanceInMiles <= tSitter.pDistance) and (tUser.age in tSitter.pAge) and timeCheck(tUser, tSitter))
 
 def matchList(tempUser, lSitter):
     matchedSitterList = []
