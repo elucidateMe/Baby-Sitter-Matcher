@@ -13,17 +13,17 @@ def calculateDistance(location1, location2):
         return None
 
 def timeCheck(tempUser, tempSitter):
-    return ((tempUser.time[0] >= tempSitter.pTime[0]) and (tempUser.time[1] <= tempSitter.pTime[1]))
+    return ((tempUser.time[0] >= tempSitter.preferredTime[0]) and (tempUser.time[1] <= tempSitter.preferredTime[1]))
 
-def matchCheck(tUser, tSitter):
-    location1 = tUser.location
-    location2 = tSitter.location
+def matchCheck(tempUser, tempSitter):
+    location1 = tempUser.location
+    location2 = tempSitter.location
     distanceInMiles = calculateDistance(location1, location2)
-    return ((distanceInMiles <= tSitter.pDistance) and (tUser.age in tSitter.pAge) and timeCheck(tUser, tSitter))
+    return ((distanceInMiles <= tempSitter.preferredDistance) and (tempUser.age in tempSitter.preferredAge) and timeCheck(tempUser, tempSitter))
 
-def matchList(tempUser, lSitter):
+def matchList(tempUser, listSitter):
     matchedSitterList = []
-    for tempSitter in lSitter:
+    for tempSitter in listSitter:
         matchedSitterList.append(matchCheck(tempUser, tempSitter))
     matchedSitterList = [i for i in matchedSitterList if i is not None]
     return matchedSitterList
@@ -45,5 +45,5 @@ if __name__ == "__main__":
 
     #print(listSitter)
 
-    matchListList = matchList(tempUser, lSitter)
+    matchListList = matchList(tempUser, listSitter)
     print(matchListList)
