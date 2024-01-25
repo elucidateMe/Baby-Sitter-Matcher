@@ -87,7 +87,7 @@ matchedSitterList = [i for i in matchedSitterList if i is not None]
 This list comprehension does add an additional O(n) time complexity, which could be resolved by a placeholder variable that can be used in the above for loop to store the result of matchCheck, which may be worth it at the cost of a little space complexity and code "cleanness"
 ```
 for tempSitter in listSitter:
-	i = matchCheck(tempUser, tempSitter)
-	if i != None:
-		matchedSitterList.append(matchCheck(tempUser, tempSitter))
+    i = matchCheck(tempUser, tempSitter)
+    if i != None:
+        matchedSitterList.append(matchCheck(tempUser, tempSitter))
 ```
