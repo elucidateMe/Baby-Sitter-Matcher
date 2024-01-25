@@ -8,12 +8,12 @@ the location of the user (stored as latitude and longitude)
 the age of child
 time needed to be watched
 ```
-	def __init__(self, location, age, time, name):
-                geolocator = Nominatim(user_agent='distance_calculator')
-                self.location = geolocator.geocode(location, timeout = None)
-                self.age = age
-                self.time = time
-                self.name = name
+def __init__(self, location, age, time, name):
+		geolocator = Nominatim(user_agent='distance_calculator')
+		self.location = geolocator.geocode(location, timeout = None)
+		self.age = age
+		self.time = time
+		self.name = name
 ```
 
 The name variable is currently utilized for bug testing and sanity checking.
@@ -25,13 +25,13 @@ the preferredDistance the sitter is willing to travel
 the preferred age range they will baby sit
 the preferred times they will baby sit
 ```
-	def __init__(self, location, pDistance, pAge, pTime, name):
-                geolocator = Nominatim(user_agent='distance_calculator')
-                self.location = geolocator.geocode(location, timeout = None)
-                self.pDistance = pDistance
-                self.pAge = pAge
-                self.pTime = pTime
-                self.name = name
+def __init__(self, location, pDistance, pAge, pTime, name):
+		geolocator = Nominatim(user_agent='distance_calculator')
+		self.location = geolocator.geocode(location, timeout = None)
+		self.pDistance = pDistance
+		self.pAge = pAge
+		self.pTime = pTime
+		self.name = name
 ```
 
 The name variable is currently utilized for bug testing and sanity checking.
@@ -86,8 +86,8 @@ matchedSitterList = [i for i in matchedSitterList if i is not None]
 ```
 This list comprehension does add an additional O(n) time complexity, which could be resolved by a placeholder variable that can be used in the above for loop to store the result of matchCheck, which may be worth it at the cost of a little space complexity and code "cleanness"
 ```
-    for tempSitter in listSitter:
-        i = matchCheck(tempUser, tempSitter)
-        if i != None:
-            matchedSitterList.append(matchCheck(tempUser, tempSitter))
+for tempSitter in listSitter:
+	i = matchCheck(tempUser, tempSitter)
+	if i != None:
+		matchedSitterList.append(matchCheck(tempUser, tempSitter))
 ```
