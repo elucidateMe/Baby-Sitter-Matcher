@@ -19,7 +19,8 @@ def matchCheck(tempUser, tempSitter):
     location1 = tempUser.location
     location2 = tempSitter.location
     distanceInMiles = calculateDistance(location1, location2)
-    return ((distanceInMiles <= tempSitter.preferredDistance) and (tempUser.age in tempSitter.preferredAge) and timeCheck(tempUser, tempSitter))
+    if ((distanceInMiles <= tempSitter.preferredDistance) and (tempUser.age in tempSitter.preferredAge) and timeCheck(tempUser, tempSitter)):
+        return (tempSitter, distanceInMiles)
 
 def matchList(tempUser, listSitter):
     matchedSitterList = []
