@@ -1,12 +1,13 @@
 # Baby Sitter Matcher
-This is a general collection of classes which matches a suitable group of "sitters" for a "user"
-GeoPy is utilized in order to calculate the distance between two addresses
+This is a general collection of classes which matches a suitable group of "sitters" for a "user".
+GeoPy is utilized in order to calculate the distance between two addresses.
+This is currently only a backend, with results printing to console, but the data necessary to bind this to a desktop GUI or a web application are present.
 
 ## User Class
 The "userClass" contains variables (location, age, and time) which are:
-the location of the user (stored as latitude and longitude)
-the age of child
-time needed to be watched
+the location of the user (stored as latitude and longitude),
+the age of child,
+and the time needed to be watched
 ```
 def __init__(self, location, age, time, name):
     geolocator = Nominatim(user_agent='distance_calculator')
@@ -20,10 +21,10 @@ The name variable is currently utilized for bug testing and sanity checking.
 
 ## Sitter Class
 The "sitterClass" contains variables (location, preferredDistance, preferredAge, and preferredTime) which are:
-the location of the sitter (stored as latitude and longitude)
-the preferredDistance the sitter is willing to travel
-the preferred age range they will baby sit
-the preferred times they will baby sit
+the location of the sitter (stored as latitude and longitude),
+the preferredDistance the sitter is willing to travel,
+the preferred age range they will baby sit,
+and the preferred times they will baby sit
 ```
 def __init__(self, location, preferredDistance, preferredAge, preferredTime, name):
     geolocator = Nominatim(user_agent='distance_calculator')
